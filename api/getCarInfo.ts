@@ -2,10 +2,10 @@ import {
   ImagePickerCanceledResult,
   ImagePickerSuccessResult,
 } from "expo-image-picker";
-import axios, { AxiosResponse } from "axios";
+import axios from "axios";
 
 const API = axios.create({
-  baseURL: "https://9b2c-213-110-143-76.ngrok-free.app",
+  baseURL: "https://dc1e-213-110-143-76.ngrok-free.app",
 });
 
 interface CarOperation {
@@ -61,7 +61,9 @@ export async function getCarInfo(
 
     return resp.data;
   } catch (error) {
-    console.error("Error during request", error.message, error.response?.data);
-    throw error; // Re-throw the error to be caught by the caller
+    throw Error(
+      error.response?.data?.detail ??
+        "Виникла помилка, спробуйте трохи пізніше!",
+    ); // Re-throw the error to be caught by the caller
   }
 }

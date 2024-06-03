@@ -1,5 +1,7 @@
 import React, { useEffect, useRef } from "react";
-import { View, StyleSheet, Animated, Easing, ViewStyle } from "react-native";
+import { View, StyleSheet, Animated, Easing } from "react-native";
+import { ThemedView } from "@/components/ThemedView";
+import { Colors } from "@/constants/Colors";
 
 const CircleLoader: React.FC = () => {
   const rotateAnim = useRef(new Animated.Value(0)).current;
@@ -24,11 +26,11 @@ const CircleLoader: React.FC = () => {
   });
 
   return (
-    <View style={styles.container}>
+    <ThemedView style={styles.container}>
       <Animated.View
-        style={[styles.circle, { transform: [{ rotate: spin }] }]}
+        style={[styles.circle, { transform: [{ rotate: spin }] } as any]}
       />
-    </View>
+    </ThemedView>
   );
 };
 
@@ -43,7 +45,7 @@ const styles = StyleSheet.create({
     height: 50,
     borderRadius: 25,
     borderWidth: 5,
-    borderColor: "blue",
+    borderColor: Colors.icon,
     borderTopColor: "transparent",
   },
 });

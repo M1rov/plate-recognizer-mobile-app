@@ -1,9 +1,9 @@
-import { StyleSheet, TouchableOpacity, View, Text } from "react-native";
+import { StyleSheet, TouchableOpacity } from "react-native";
 import { FontAwesomeIcon } from "@fortawesome/react-native-fontawesome";
 import { IconProp } from "@fortawesome/fontawesome-svg-core";
 import { ThemedText } from "@/components/ThemedText";
 import { ThemedView } from "@/components/ThemedView";
-import { useThemeColor } from "@/hooks/useThemeColor";
+import { Colors } from "@/constants/Colors";
 
 interface Props {
   icon?: IconProp;
@@ -12,8 +12,8 @@ interface Props {
 }
 
 export const ThemedButton = ({ style, icon, text, onPress }: Props) => {
-  const iconColor = useThemeColor({}, "icon");
-  const color = useThemeColor({}, "text");
+  const iconColor = Colors.icon;
+  const color = Colors.text;
   return (
     <TouchableOpacity onPress={onPress} style={[style, styles.button]}>
       <ThemedView style={[styles.view, { borderColor: color }]}>
