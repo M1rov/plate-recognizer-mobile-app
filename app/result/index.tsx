@@ -2,7 +2,7 @@ import { useLocalSearchParams, useRouter } from "expo-router";
 import { useEffect, useState } from "react";
 import { launchCameraAsync, launchImageLibraryAsync } from "expo-image-picker";
 import { ThemedView } from "@/components/ThemedView";
-import { CarInfo, getCarInfo } from "@/api/getCarInfo";
+import { getCarInfo } from "@/api/getCarInfo";
 import { useNotificationContext } from "@/providers/NotificationProvider";
 import { Image, ScrollView, StyleSheet, View } from "react-native";
 import { ThemedText } from "@/components/ThemedText";
@@ -15,6 +15,7 @@ import {
   faPalette,
 } from "@fortawesome/free-solid-svg-icons";
 import CircleLoader from "@/components/CircleLoader";
+import { CarInfo } from "@/interface/CarInfo";
 
 const options = {
   mediaType: "photo",
@@ -28,8 +29,6 @@ export default function ResultPage() {
 
   const { imagePickMethod } = useLocalSearchParams();
   const router = useRouter();
-
-  console.log(carInfo, "carinfo");
 
   useEffect(() => {
     if (carInfo) {

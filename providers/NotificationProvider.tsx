@@ -1,6 +1,5 @@
-import React, { createContext, useState, ReactNode, FC } from "react";
+import { createContext, useState, useContext, ReactNode, FC } from "react";
 import NotificationBar from "@/components/NotificationBar";
-import { useContext } from "react/index";
 
 interface Notification {
   message: string;
@@ -25,7 +24,7 @@ const NotificationProvider: FC<{ children: ReactNode }> = ({ children }) => {
     setNotification({ message, type });
     setTimeout(() => {
       setNotification(null);
-    }, 3000); // Auto-hide after 3 seconds
+    }, 5000); // Auto-hide after 5 seconds
   };
 
   return (
